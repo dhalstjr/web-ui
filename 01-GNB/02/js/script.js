@@ -24,6 +24,6 @@ $(function () {
     $submenu.stop().slideUp(duration);
 
     $menu.removeClass('on');
-    $header.romoveClass('active');
+    $header.removeClass('active');
   });
 });
