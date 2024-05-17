@@ -59,6 +59,7 @@ ol {
   top: 50%;
   right: 0;
   transform: translateY(-50%) rotate(135deg);
+  transition: 0.6s;
 }
 
 .answer-wrap {
@@ -67,4 +68,13 @@ ol {
   margin-top: 20px;
 
   display: none;
+}
+
+.faq-wrap > ul > li.on > strong {
+  color: #f00;
+}
+
+.faq-wrap > ul > li.on > strong::after {
+  border-color: #f00; /* bdc#f00 */
+  transform: translateY(-50%) rotate(315deg);
 }
