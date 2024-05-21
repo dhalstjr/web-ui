@@ -72,17 +72,14 @@
       // 창닫기
       $btnClose.on('click', function (e) {
         e.preventDefault();
-
+        // 추가 되는 코드가 더 있을때
+        // 추가 코드...
         closePopup();
       });
 
       // dim 클릭해도 팝업창 닫기
-      $dim.on('click', function () {
-        // $popup.removeClass('active');
-        // $dim.fadeOut();
-
-        closePopup();
-      })
+      // 추가 되는 코드가 없을 때는 간단하게 사용. function자리에 정의한 함수를 넣는다. ()를 뺴고
+      $dim.on('click', closePopup);
 
       // 중복코드를 함수로 정의
       function closePopup() {
