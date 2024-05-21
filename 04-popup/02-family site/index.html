@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>family Site</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul,
+    ol,
+    li {
+      list-style: none;
+    }
+
+    .wrap {
+      width: 50%;
+      margin: 50px auto;
+      border: 10px solid #eee;
+      padding: 60px;
+    }
+
+    .sample {
+      background: #f5f5f5;
+      margin-top: 60px;
+    }
+
+    .select-menu {
+      width: 200px;
+      height: 50px;
+      border: 1px solid #000;
+    }
+
+    .select-wrap {
+      width: 200px;
+      height: 50px;
+      border: 1px solid #000;
+      background: #fff;
+      position: relative;
+    }
+
+    .select-wrap strong {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 10px;
+    }
+
+    .select-wrap strong::after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      border: solid #000;
+      border-width: 2px 2px 0 0;
+      transform: rotate(135deg);
+    }
+
+    .select-list {
+      position: absolute;
+      top: 50px;
+      left: -1px;
+      width: calc(100% + 2px);
+      border: 1px solid #000;
+      background: #fff;
+      /* display: none; */
+    }
+
+    .select-list li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    .select-list li:hover {
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Family site link</h1>
+
+    <!-- 1. select -->
+    <div class="sample">
+      <!-- select>opt*4 -->
+      <select class="select-menu">
+        <option value="#" selected>Family Site</option>
+        <option value="https://www.google.com">구글</option>
+        <option value="https://www.naver.com">네이버</option>
+        <option value="https://www.daum.net">다음</option>
+      </select>
+    </div>
+
+    <!-- 2. 디자인 커스텀 -->
+    <div class="sample">
+      <!-- .select-wrap>strong+ul.select-list>li*3 -->
+      <div class="select-wrap">
+        <strong>Family Site</strong>
+        <ul class="select-list">
+          <li data-link="https://www.google.com">구글</li>
+          <li data-link="https://www.naver.com">네이버</li>
+          <li data-link="https://www.daum.net">다음</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
