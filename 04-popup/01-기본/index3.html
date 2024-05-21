@@ -30,10 +30,14 @@
       transform: translate(-50%, -50%);
       padding: 60px;
 
-      /* animate()  */
       top: -50%;
-      transition: 0.4s;
       opacity: 0;
+      transition: 0.3s cubic-bezier(0, 0, .71, -0.34) 0.4s;
+    }
+
+    .popup.active {
+      top: 50%;
+      opacity: 1;
     }
 
     .dim {
@@ -57,56 +61,42 @@
       const $popup = $('.popup');
       const $btnClose = $('.btn-close');
 
-      console.log($dim, $popup)
-
-
-      //  a를 클릭하면
+      // 팝업창 띄우기
       $('.wrap a').on('click', function (e) {
         e.preventDefault();
 
-        //  dim 보이고(fadeIn)
-        $dim.slideDown();
+        $dim.fadeIn();
+        $popup.addClass('active')
+      });
 
-        //  popup 보이고(animate)
-        // $popup.animate({옵션} , 지속시간, 끝난 후 동작);
-        $popup.stop().animate({
-          opacity: 1,
-          top: '50%'
-        }, 300)
-      })
-      // //  닫기 버튼을 클릭했을때
-      // $btnClose.on('click', function (e) {
-      //   e.preventDefault();
-
-      //   $dim.fadeOut();
-
-      //   $popup.stop().animate({
-      //     opacity: 0,
-      //     top: '-50%'
-      //   }, 300)
-
-      //  닫기 버튼을 클릭했을때
+      // 창닫기
       $btnClose.on('click', function (e) {
         e.preventDefault();
 
+        closePopup();
+      });
 
-        // $popup.animate({옵션} , 지속시간, ease (속도),끝난 후 동작);
-        $popup.stop().animate({
-          opacity: 0,
-          top: '-50%'
-        }, 1000, 'linear', function () {
-          // (끝난 후 동작) 동작이 끝난 후에 딤이 사라짐. 
-          $dim.slideUp();
-        });
+      // dim 클릭해도 팝업창 닫기
+      $dim.on('click', function () {
+        // $popup.removeClass('active');
+        // $dim.fadeOut();
 
+        closePopup();
       })
-    });
+
+      // 중복코드를 함수로 정의
+      function closePopup() {
+        $popup.removeClass('active');
+        $dim.fadeOut();
+      }
+    })
   </script>
 
 </head>
 
 <body>
   <div class="dim"></div>
+
 
   <div class="popup">
     <p>팝업내용</p>

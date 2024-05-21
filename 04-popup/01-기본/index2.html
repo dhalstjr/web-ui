@@ -22,7 +22,6 @@
 
     .popup {
       position: fixed;
-      top: 50%;
       left: 50%;
       width: 600px;
       height: 400px;
@@ -30,12 +29,68 @@
       background: #fff;
       transform: translate(-50%, -50%);
       padding: 60px;
+
+      top: -50%;
+      opacity: 0;
+      transition: 0.3s cubic-bezier(0, 0, .71, -0.34) 0.4s;
+    }
+
+    .popup.active {
+      top: 50%;
+      opacity: 1;
+    }
+
+    .dim {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+
+      /* fadeIn() ,fadeOut() */
+      display: none;
     }
   </style>
+
+  <script src="./js/jquery-3.7.0.min.js"></script>
+  <script>
+    $(function () {
+      // 대상을 변수에 저장
+      const $dim = $('.dim');
+      const $popup = $('.popup');
+      const $btnClose = $('.btn-close');
+
+      // 팝업창 띄우기
+      $('.wrap a').on('click', function (e) {
+        e.preventDefault();
+
+        $dim.fadeIn();
+        $popup.addClass('active')
+      });
+
+      // 창닫기
+      $btnClose.on('click', function (e) {
+        e.preventDefault();
+
+        $popup.removeClass('active');
+        $dim.fadeOut();
+      });
+
+      // dim 클릭해도 팝업창 닫기
+      $dim.on('click', function () {
+        $popup.removeClass('active');
+        $dim.fadeOut();
+      })
+    })
+  </script>
 
 </head>
 
 <body>
+  <div class="dim"></div>
+
+
   <div class="popup">
     <p>팝업내용</p>
     <button class="btn-close" type="button">닫기</button>
