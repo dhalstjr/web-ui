@@ -11,7 +11,9 @@ $(function () {
   // 비디오 리스트를 클릭(선택) 했을 때
   $selectVideo.on('click', function () {
     // 선택한 비디오 링크를 받아서 변수에 저장
-    const videoLink = $(this).data('link'); /* data-link */
+    let videoLink = $(this).data('link'); /* data-link */
+
+    videoLink += '?autoplay=1'; //videoLink =videoLink + '?autoplay=1'
 
     // 선택한 비디오의 텍스트를 변수에 저장
     const videoText = $(this).text();
@@ -21,7 +23,7 @@ $(function () {
     //  $video 의 src값으로 비디오 링크를 세팅
     $video.attr('src', videoLink);
 
-    // .caption에 세팅 (나는 변수에 저장을 했기 때문에 )
+    // .caption에 세팅 (나는 변수에 저장을 했기 때문에)
     $Caption.text(videoText);
 
     // dim을 보이게
@@ -36,5 +38,8 @@ $(function () {
     $dim.fadeOut();
     // $videoWrap을 안보이게
     $videoWrap.removeClass('active');
+
+    // $video의 src값을 없애자 -->동영상 삭제
+    $video.attr('src', '');
   });
 });
