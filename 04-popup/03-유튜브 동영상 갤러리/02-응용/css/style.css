@@ -33,6 +33,7 @@ body {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
+
   display: none; /* jQuery : fadeIn/Out 사용 예정 */
 }
 
