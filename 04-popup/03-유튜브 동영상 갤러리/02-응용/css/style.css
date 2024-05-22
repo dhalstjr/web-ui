@@ -88,7 +88,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 14px;
-  
   color: #fff;
 }
 
@@ -103,7 +102,14 @@ body {
   gap: 20px;
 }
 .video-list li {
-  cursor: pointer;
   border: 5px solid #000;
   padding: 50px;
+
+  cursor: pointer;
+  background: #fff;
+  width: 350px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
