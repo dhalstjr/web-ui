@@ -73,9 +73,11 @@ $(function () {
     $videoWrap.removeClass('active');
 
     // $video의 src값을 없애자 -->동영상 삭제
-    $video.attr('src', '');
+    setTimeout(function () {
+      $video.attr('src', '');
+    }, 300);
 
     // $body의 배경 지우기
-    $body.css('background', '');
+    // $body.css('background', '');
   });
 });
