@@ -66,12 +66,32 @@ img {
 .btn-close {
   position: absolute;
   top: 10px;
-  right: 0;
-  background: #000;
-  color: #fff;
+  right: -70px;
+  background: #fff;
+  color: #000;
   padding: 10px;
   border-radius: 5px;
 
   cursor: pointer;
   border: none;
+}
+
+.gallery-title {
+  font-weight: 600;
+  font-size: 2rem;
+  background: #fff;
+  text-align: center;
+  padding: 10px;
+
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap; /* 무조건 한줄 표시 */
+  text-overflow: ellipsis; /* 말줄임 표시 */
+}
+
+.gallery-content iframe {
+  aspect-ratio: 16/9;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
