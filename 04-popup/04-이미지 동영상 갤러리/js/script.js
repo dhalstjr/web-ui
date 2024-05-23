@@ -5,14 +5,14 @@ $(function () {
   const $popup = $('.popup');
   const $btnClose = $('.btn-close');
   const $galleryContent = $('.gallery-content');
-  const duration = 300;
+  const duration = 500;
 
   // 브라우저 창 크기 구하기
   const $window = $(window);
   // innerWidth = 패딩까지 포함한 크기 , outerWidth = 보더까지 포함한 크기.
   console.log($window.outerWidth() / 2);
 
-  // 선택해서 클릭하면 dim이 보이고, 팝업이 뜬다.
+  // 1.선택해서 클릭하면 dim이 보이고, 팝업이 뜬다.
   $gallery.on('click', function () {
     $dim.fadeIn();
     $popup.addClass('active');
@@ -21,7 +21,7 @@ $(function () {
     const $ingEl = $(this).find('img');
     // console.log($ingEl);
 
-    // 각각의 정보를 변수에
+    // 2.각각의 정보를 변수에
     const imgSrc = $ingEl.attr('src');
     const imgTitle = $ingEl.attr('alt');
     // const videoSrc = $ingEl.attr.('data-link');
@@ -50,7 +50,7 @@ $(function () {
     $galleryContent.prepend(`<div class = "gallery-title">${imgTitle}</div>`);
   });
 
-  // 닫기 버튼을 클릭하면, 팝업창과 dim이 사라지게
+  // 1.닫기 버튼을 클릭하면, 팝업창과 dim이 사라지게
   $btnClose.on('click', function () {
     $dim.fadeOut();
     $popup.removeClass('active');
@@ -58,6 +58,6 @@ $(function () {
     // 0.5초 후에 galleryContent를 초기화
     setTimeout(function () {
       $galleryContent.html('');
-    }, 500);
+    }, duration);
   });
 });
