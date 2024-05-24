@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BMW mini.</title>
-  </script>
+
   <style>
     * {
       margin: 0;
@@ -43,9 +43,33 @@
       transition: 0.4s;
     }
   </style>
-
-  </script>
 </head>
+<script src="./js/jquery-3.7.0.min.js"></script>
+
+<script>
+  $(function () {
+    // 대상을 변수에 저장
+    const $mini = $('.mini')
+    const $window = $(window);
+    const $document = $(document);
+
+    const winHeight = $window.outerHeight();
+    const docHeight = $document.outerHeight();
+    const scrollHeight = docHeight - winHeight;
+
+    $window.on('scroll', function () {
+      const scrollTop = $(this).scrollTop();
+
+      console.log(scrollTop)
+
+      const percent = (scrollTop / scrollHeight * 100) + '%'
+
+      console.log(percent)
+      $mini.css('left', percent)
+
+    })
+  })
+</script>
 
 <body>
   <div class="progress-wrap">
