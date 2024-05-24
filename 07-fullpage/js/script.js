@@ -5,47 +5,80 @@ $(function () {
   const $section = $('#container > section');
   const $btnTop = $('.btn-top');
 
+  // top버튼을 숨기고 시작
+  $btnTop.hide();
+
+  // 항목별 인덱스를 활용
+  let secIdx = 0;
+
+  updateDot(secIdx);
+  moveSection(secIdx);
   // console.log($window, $sideDot, $section, $btnTop);
 
   // Top버튼을 클릭했을 때 상단으로 이동
   $btnTop.on('click', function () {
-    moveSection(0);
+    secIdx = 0;
+    moveSection(secIdx);
   });
 
-  // section의 위치값 구하기
-  console.log($section.eq(1).offset().top);
-
   // section을  이동하는 동작을 함수로 정의
-  function moveSection(pos) {
+  function moveSection(index) {
+    // 인덱스를 활용해서 섹션의 위치값 구하기
+    $sideDot.removeClass('on').eq(index).addClass('on');
+    const posTop = index * $window.outerHeight();
+
+    // console.log(posTop);
     $('html, body').stop().animate(
       {
-        scrollTop: pos,
+        scrollTop: posTop,
       },
       300
     );
+
+    updateDot(index);
+    console.log(secIdx);
+
+    // TOP버튼 보이게/숨기게
+    if (secIdx >= 2) {
+      $btnTop.fadeIn();
+    } else {
+      $btnTop.fadeOut();
+    }
   }
 
   // indicator를 클릭했을때
   $sideDot.on('click', function () {
-    const sideIdx = $(this).index();
-    const secPos = $section.eq(sideIdx).offset().top;
-    console.log(sideIdx, secPos);
+    secIdx = $(this).index();
 
-    moveSection(secPos);
-
-    $sideDot.removeClass('on').eq(sideIdx).addClass('on');
+    moveSection(secIdx);
   });
+
+  // indicator 업데이트 하는 함수
+  function updateDot(index) {
+    $sideDot.removeClass('on').eq(index).addClass('on');
+  }
 
   // 마우스 휠 & 키보드 조작
   $window.on('wheel keydown', function (e) {
+    if ($('html, body').is(':animated')) return;
+
     if (e.originalEvent.deltaY < 0 || e.key === 'ArrowUp') {
       // 휠을 올리거나 위로 가는 화살표 키를 누른 경우
-      console.log('휠을 올리거나 위로 가는 화살표 키를 누른 경우');
+      // 조건을 걸어서 코드를 종료
+      if (secIdx === 0) return;
+      secIdx--;
     } else if (e.originalEvent.deltaY > 0 || e.key === 'ArrowDown') {
       // 휠을 내리거나 아래 화살표 키를 누른 경우
-      console.log('휠을 내리거나 아래 화살표 키를 누른 경우');
+
+      if (secIdx === $section.length - 1) return;
+      secIdx++;
     }
 
-    moveSection(secPos);
+    moveSection(secIdx);
+  });
+
+  // 브라우저 창이 조정될때
+  $window.on('resize', function () {
+    moveSection(secIdx);
   });
 });

@@ -15,6 +15,10 @@ img {
   vertical-align: top;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow: hidden;
 }
@@ -98,6 +102,7 @@ main > section.section4 {
   font-size: 1.5rem;
   cursor: pointer;
   border-radius: 50%;
+  background: #fff;
 }
 
 .indicator {
