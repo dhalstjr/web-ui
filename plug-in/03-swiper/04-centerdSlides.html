@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slidesPerView</title>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      ol,
+      li {
+        list-style: none;
+      }
+
+      img {
+        vertical-align: top;
+      }
+
+      /* 전체를 별도의 div로 잡아주고 슬라이더는 크기를 주지말자 */
+      .product-list-wrapper {
+        width: 90%;
+        margin: 50px auto;
+
+        /* 페이지내이션, 버튼의 기준점 */
+        position: relative;
+      }
+
+      .product-list {
+        border: 1px solid #000;
+      }
+
+      /* 미리 줄여놓고 */
+      .product-list .swiper-slide {
+        height: 400px;
+        border: 1px solid #f00;
+        transform: scale(0.8);
+        transition: 1s;
+      }
+
+      /* 활성화되 놈만 원래 크기로 */
+      .product-list .swiper-slide.swiper-slide-active {
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product-list-wrapper">
+      <!-- ************* -->
+      <!-- Slider main container -->
+      <div class="swiper product-list">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">Slide 4</div>
+          <div class="swiper-slide">Slide 5</div>
+          <div class="swiper-slide">Slide 6</div>
+          <div class="swiper-slide">Slide 7</div>
+          <div class="swiper-slide">Slide 8</div>
+          <div class="swiper-slide">Slide 9</div>
+        </div>
+      </div>
+      <!-- ************* -->
+
+      <!-- 커스텀할 페이지내이션, 버튼 -->
+      <div class="indicator"></div>
+      <button class="btn-prev">이전</button>
+      <button class="btn-next">다음</button>
+    </div>
+
+    <script>
+      const productList = new Swiper('.product-list', {
+        autoplay: true,
+        slidesPerView: 5,
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true,
+
+        // 이전 버전에서 쓰인 듯
+        // loopedSlides: 2,
+
+        pagination: {
+          el: '.indicator',
+          // type: 'progressbar',
+          type: 'fraction',
+        },
+        navigation: {
+          nextEl: '.btn-next',
+          prevEl: '.btn-prev',
+        },
+      });
+    </script>
+  </body>
+</html>

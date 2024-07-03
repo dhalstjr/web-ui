@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>css offset-path</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .wrap {
+      width: 1200px;
+      border: 1px solid #000;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .maple {
+      width: 80px;
+      height: 80px;
+      background: url(http://class902.dothome.co.kr/maple.png) 0 0 / cover no-repeat;
+
+      offset-path: path('M0.5 107.5C68.5 -1.16669 270.1 -87 438.5 181C649 516 833 467 963 348.5C1067 253.7 1060.5 59.8333 1031 1'
+        );
+      offset-distance: 0%;
+      animation: mapleAni 3s;
+    }
+
+    @keyframes mapleAni {
+      100% {
+        offset-distance: 100%;
+      }
+    }
+
+    .wrap svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<!-- https://velog.io/@kimhyo/CSS-offset-%EC%86%8D%EC%84%B1-%ED%8A%B9%EC%A0%95-%EA%B2%BD%EB%A1%9Csvg-path%EC%97%90-%EB%94%B0%EB%9D%BC-%EC%9D%B4%EB%8F%99%ED%95%98%EB%8A%94-%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98-%EB%A7%8C%EB%93%A4%EA%B8%B0-d70mb7cs -->
+
+<body>
+  <div class="wrap">
+    <svg viewBox="0 0 1051 439" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.5 107.5C68.5 -1.16669 270.1 -87 438.5 181C649 516 833 467 963 348.5C1067 253.7 1060.5 59.8333 1031 1"
+        stroke="red" />
+    </svg>
+
+    <div class="maple"></div>
+  </div>
+</body>
+
+</html>
